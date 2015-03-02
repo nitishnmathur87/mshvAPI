@@ -1,0 +1,82 @@
+Blood Pressure:
+
+{
+    "Systolic": "2000",
+    "Diastolic": "20",
+    "Pulse": "30",
+    "When": "2013-01-30T00:00:00",
+    "IrregularPulse": "true"
+}
+
+Condition:
+
+{
+    "Name": "Back Pains.",
+    "StopReason": "Feeling better.",
+    "StartDate": "2013-02-02T00:00:00",
+    "StopDate": "2013-02-28T00:00:00"
+}
+
+DiabeticProfile:
+
+{
+	"GlucoseUpperBound": "30",
+	"GlucoseLowerBound": "10",
+	"When": "2013-10-07T00:00:00"
+}
+
+Emotion:
+
+{
+	"Mood": "3",
+	"Stress": "3",
+	"WellBeing": "3",
+	"When": "2013-10-07T00:00:00"
+}
+
+Exercise:
+
+{
+	"Title": "Rope jumping2",
+	"Distance": "3218.688",
+	"Duration": "20",
+	"When": "2013-10-07T00:00:00"
+}
+
+Height:
+
+{
+	"Value": "45",
+	"When": "2013-10-07T00:00:00"
+}
+
+Weight:
+
+{
+	"Value": "210",
+	"When": "2013-10-07T00:00:00"
+}
+
+Medication:
+
+{
+    "Name": "Amoxicillin404D",
+    "Strength": "20",
+    "Dose": "2mg",
+    "HowTaken": "Take after dinner.",
+    "Frequency": "0.5 to 0.6 per day.",
+    "DatePrescribed": "2013-01-01T00:00:00",
+    "DateStarted": "2013-01-01T00:00:00",
+    "DateDiscontinued": "2013-01-30T00:00:00",
+    "PrescribedBy": "Dr. Adams",
+    "Note": "Feeling cold still" 
+}
+
+Vital:
+
+{
+	"Title": "Blood Pressure",
+	"Unit": "BPM",
+	"Value": "30",
+	"When": "2013-10-07T00:00:00"
+}

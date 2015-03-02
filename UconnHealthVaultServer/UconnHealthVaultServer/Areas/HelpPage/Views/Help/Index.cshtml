@@ -1,0 +1,157 @@
+@using System.Web.Http
+@using System.Web.Http.Description
+@using System.Collections.ObjectModel
+@using UconnHealthVaultServer.Areas.HelpPage.Models
+@model Collection<ApiDescription>
+
+@{
+    ViewBag.Title = "The University of Connecticut Microsoft Healthvault Server";
+
+    // Group APIs by controller
+    ILookup<string, ApiDescription> apiGroups = Model.ToLookup(api => api.ActionDescriptor.ControllerDescriptor.ControllerName);
+}
+
+<header>
+    <div class="content-wrapper">
+        <div class="float-left">
+            <h1>@ViewBag.Title</h1>
+        </div>
+    </div>
+</header>
+<div id="body">
+    <section class="featured">
+        <div class="content-wrapper">
+            <h2>Introduction</h2>
+            <pre>
+The Microsoft Healthvault (MSHV) server at the University of Connecticut is a middle layer between mobile devices and Microsoft Healthvault. The main functionality of the server is to:
+
+	- Provide mobile user authentication to MSHV.
+	- Add/Get/Update/Delete Health Record Items (HRI) from MSHV.
+ 
+End Points
+
+	HRIs supported are listed at the server’s help page http://cicats9.engr.uconn.edu:14080/Help
+
+Example Requests (GET/POST/UPDATE)
+
+	/api/Health/GetAllergies
+	/api/Health/AddAllergy
+	/api/Health/UpdateAllergy
+
+Authentication
+
+	To make requests to the MSHV server you will need a PublicId and a RecordId. These two Ids are for authentication purposes only. You can get personal Ids by visiting the following link and signing in to MSHV:
+	http://cicats9.engr.uconn.edu:14080/Default.aspx
+
+	Append them as a postfix to every request: ex - /api/Health/UpdateAllergy?PublicId=xxxx-xxxx-xxxx-xxxxx&RecordId=xxxx-xxxx-xxxx-xxxxx
+
+Example JSON Post Requests (body of request) request type: 'application/json'
+
+	Blood Pressure:
+
+	{
+	    "Systolic": "2000",
+	    "Diastolic": "20",
+	    "Pulse": "30",
+	    "When": "2013-01-30T00:00:00",
+	    "IrregularPulse": "true"
+	}
+
+	Condition:
+
+	{
+	    "Name": "Back Pains.",
+	    "StopReason": "Feeling better.",
+	    "StartDate": "2013-02-02T00:00:00",
+	    "StopDate": "2013-02-28T00:00:00"
+	}
+
+	DiabeticProfile:
+
+	{
+		"GlucoseUpperBound": "30",
+		"GlucoseLowerBound": "10",
+		"When": "2013-10-07T00:00:00"
+	}
+
+	Emotion:
+
+	{
+		"Mood": "3",
+		"Stress": "3",
+		"WellBeing": "3",
+		"When": "2013-10-07T00:00:00"
+	}
+
+	Exercise:
+
+	{
+		"Title": "Rope jumping2",
+		"Distance": "3218.688",
+		"Duration": "20",
+		"When": "2013-10-07T00:00:00"
+	}
+
+	Height:
+
+	{
+		"Value": "45",
+		"When": "2013-10-07T00:00:00"
+	}
+
+	Weight:
+
+	{
+		"Value": "210",
+		"When": "2013-10-07T00:00:00"
+	}
+
+	Medication:
+
+	{
+	    "Name": "Amoxicillin404D",
+	    "Strength": "20",
+	    "Dose": "2mg",
+	    "HowTaken": "Take after dinner.",
+	    "Frequency": "0.5 to 0.6 per day.",
+	    "DatePrescribed": "2013-01-01T00:00:00",
+	    "DateStarted": "2013-01-01T00:00:00",
+	    "DateDiscontinued": "2013-01-30T00:00:00",
+	    "PrescribedBy": "Dr. Adams",
+	    "Note": "Feeling cold still" 
+	}
+
+	Vital:
+
+	{
+		"Title": "Blood Pressure",
+		"Unit": "BPM",
+		"Value": "30",
+		"When": "2013-10-07T00:00:00"
+	}
+
+	Allergy:
+
+	{
+		
+	}
+
+	PeakFlow:
+
+	{
+		
+	}
+</pre>
+        </div>
+    </section>
+    <section class="content-wrapper main-content clear-fix">
+        @foreach (var group in apiGroups)
+        {
+            @Html.DisplayFor(m => group, "ApiGroup")
+        }
+    </section>
+</div>
+
+@section Scripts {
+    <link type="text/css" href="~/Areas/HelpPage/HelpPage.css" rel="stylesheet" />
+}
